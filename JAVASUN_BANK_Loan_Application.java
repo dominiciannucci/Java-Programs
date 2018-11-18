@@ -6,12 +6,6 @@
  *                mortgage status, and annual salary. It compares the user input to the acceptable 
  *                conditional values provided by the project specifications, and returns output which displays
  *                whether the user was approved or disapproved for the loan. 
- * Notes:		  My plan for this project was to try to give the appearance of an analog ATM or kiosk style screen.
- * 				  I wanted to change the font styles to Lucida Sans Typewriter with green font on a black background.
- * 				  I also found a code snippet for a delayed character-by-character typewriter effect. I tried
- * 				  endlessly to get these modifications to work, but I could not. In the end, I had to leave it boring
- * 				  and, as-is. And is there a way to clear the console screen in Java, other than printing a bunch of
- * 				  blank lines?
  */
 import java.util.Scanner;
 
