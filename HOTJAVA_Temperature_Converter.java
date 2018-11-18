@@ -2,10 +2,10 @@
  * @author:     Dominic Iannucci
  * @date:       10/10/2018
  * @descripton: This program converts temperatures from Celsius to Farhenheit, and vice versus.
- * 			    The program will prompt the user to select the desired outcome unit of measure, and then 
- * 			    prompt the user for the temperature reading to be converted. The program will output the 
- * 			    input value and the converted value. Finally, it will prompt the user to convert another
- * 	            value, or end the program.
+ * 		The program will prompt the user to select the desired outcome unit of measure, and then 
+ * 		prompt the user for the temperature reading to be converted. The program will output the 
+ * 		input value and the converted value. Finally, it will prompt the user to convert another
+ * 	        value, or end the program.
  */
 import java.util.Scanner;
 public class Assignment3 
