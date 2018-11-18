@@ -54,7 +54,7 @@ public class Assignment2LoanApplication
 				System.out.println(" ");
 				System.out.println("                              LOAN APPLICATION SUMMARY");
 				System.out.println(" ");
-				System.out.println("Do you own a home?                                                                      yes");
+				System.out.println("Do you own a home?                                                                       no");
 				System.out.println(" ");
 				System.out.println("Do you pay a mortgage on that home?                                                     N/A");
 				System.out.println(" ");
