@@ -7,7 +7,7 @@
  * 				 prompts the user to enter their Social Security Number (SSN), the total number of (whole) hours
  * 				 worked per week, and the rate of hourly pay. The program automatically calculates the number of
  * 				 regular hours worked (based upon a 40-hr work week), and the number of overtime hours worked.
- * 				 If overtime hourse were detected, the program assigns the rate of time at 1.5 times the RATE
+ * 				 If overtime hours were detected, the program assigns the rate of time at 1.5 times the RATE
  * 				 of regular pay. Finally, depending on the user's previous selection, the program will display 
  * 				 either the HOURS worked, the RATE of pay, and gross weekly SALARY, minus OVERTIME; the number of
  * 				 OVERTIME hours worked, the RATE of OVERTIME pay, and the gross weekly overtime (ot)SALARY; or 
