@@ -30,7 +30,7 @@
 
 import javax.swing.JOptionPane;
 
-public class JAVAonWHEELZ 
+public class JAVAonWHEELZ_Vehicle_Inventory
 {
 
 	public static void main(String[] args) 
@@ -224,4 +224,4 @@ public class JAVAonWHEELZ
 		}
 	}// END quitDISPLAY()
 	
-}// END CLASS JAVAonWHEELZ
+}// END CLASS JAVAonWHEELZ_Vehicle_Inventory
