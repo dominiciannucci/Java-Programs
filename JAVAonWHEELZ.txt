@@ -1,0 +1,176 @@
+/*
+ * @author:       Dominic Iannucci
+ * @date:         12/12/2018
+ * @description:  This program uses a modular design to manage a fleet of trucks, and 
+ * 				  identify those trucks with a total mileage greater than 500,000 miles
+ * 				  so that they may be sent to auction. The main menu allows the user to
+ * 				  begin the program or exit early. The sub-menu prompts the user to [1]
+ * 				  Add a truck, [2] Search for a truck, [3] Display all trucks, or [4] Exit.
+ * 
+ * 				  Option [1] prompts the user to enter the truck model, then calls a method to
+ * 				  to randomly generate the mileage between 0 - 1,000,000 miles. The program
+ * 				  then evealuates the randomly generated mileage, and if over 500,000 sets the
+ * 				  truck's status to 'True,' meaning that the vehicle is available for auction.
+ * 
+ * 				  Option [2] prompts the user to enter a truck model, and then searches all
+ * 				  data stored in the arrays for the requested record. If the record is found,
+ * 			  	  and the mileage for the truck is greater than 500,000 miles, the program 
+ * 				  will display a "Truck to be auctioned." message. Otherwise, it will display a 
+ *     			  "Truck not available for auctioning." message.
+ *     
+ *     			  Option [3] displays information for all trucks whose records are stored within
+ *     			  the array, and also displays whether or not each vehicle is available for
+ *     			  auction.
+ *     
+ *     			  Option [4] displays the information for the total trucks in inventory, the truck
+ *     			  with the highest mileage, the truck with the lowest mileage, and the number of 
+ *     			  trucks available for auction, before finally exiting the program.
+ * 				  
+ */
+
+import javax.swing.JOptionPane;
+
+public class Final_Iannucci 
+{
+
+	public static void main(String[] args) 
+	{
+		// DECLARATIONS:
+		int SELECTION = 0;
+		int nextCOUNT = 0;
+		int truckQUERY = -1;
+		String searchTRUCK = " ";
+				
+		// TRUCK:
+		String [] MAKE = new String [100];
+		int [] MILEAGE = new int [100];
+		Boolean [] STATUS = new Boolean [100];
+		
+		
+		// PROCESS:
+		JOptionPane.showConfirmDialog(null, "Would you like to start the JavaonWheelz program?");
+		while(SELECTION != 4)
+		{	
+			SELECTION = MENU();
+			switch(SELECTION)
+			{
+				case 1: addTRUCK(MAKE, MILEAGE, STATUS, nextCOUNT);
+						nextCOUNT++;
+						break;
+					
+				case 2: getTRUCK();
+						truckQUERY = searchTRUCK(searchTRUCK, MAKE);
+						if(truckQUERY < 0)
+							JOptionPane.showMessageDialog(null, searchTRUCK + " was not located in the database.");
+						else
+							JOptionPane.showMessageDialog(null, searchTRUCK + " was located in the database.\n" + truckQUERY);
+						break;
+				
+				case 3: dispSINGLE(MAKE, MILEAGE, STATUS);
+						break;
+			}// END SWITCH SELECTION
+									
+		}// END WHILE
+		JOptionPane.showMessageDialog(null, "Thank you for using, JAVAonWHEELZ! Goodbye.");
+
+	}// END MAIN
+	//==========================================================================================
+	public static int MENU()
+	{
+		String input = " ";
+		int SELECTION = 0;
+		while(SELECTION < 1 || SELECTION > 5)
+		{
+			input = JOptionPane.showInputDialog(null, "MAIN MENU:\n\n" + "[1] Add a truck\n" + "[2] Search for a truck\n" + "[3] Display all trucks\n" + "[4] Exit\n\n" + "Enter a selection [1 - 4]: ");
+			SELECTION = Integer.parseInt(input);
+			if(SELECTION < 1 || SELECTION > 5)
+				JOptionPane.showMessageDialog(null,  "Invalid selection. Please enter a valid selection [1 - 4].");
+		}// END WHILE
+		return SELECTION;
+	}// END MENU()
+	
+	//==========================================================================================
+	public static void addTRUCK(String [] MAKE, int [] MILEAGE, Boolean [] STATUS, int nextCOUNT)
+	{
+		int randomMILEAGE = 0;
+		Boolean truckSTATUS = true;
+		String input = " ";
+		input = JOptionPane.showInputDialog(null, "Enter make of truck to add: ");
+		// VALIDATE:
+		MAKE[nextCOUNT] = input;
+		getMILEAGE();
+		MILEAGE[nextCOUNT] = randomMILEAGE;
+		getSTATUS(randomMILEAGE);
+		STATUS[nextCOUNT] = truckSTATUS;
+	}// END addTRUCK()
+	
+	//==========================================================================================
+	public static void getMILEAGE()
+	{
+		int randomMILEAGE = 0;
+		for(int i = 0; i < 1; i++)
+		{
+			randomMILEAGE = (int)(Math.random() * 1000000 +1);
+			System.out.println(randomMILEAGE);
+		}// END FOR
+
+	}// END getMILEAGE()
+
+	//==========================================================================================	
+	public static Boolean getSTATUS(int randomMILEAGE)
+	{
+		Boolean truckSTATUS = true;
+		if(randomMILEAGE <= 500000)
+		{
+			truckSTATUS = false;
+		}// END IF
+		else
+		{
+			truckSTATUS = true;
+		}// END ELSE
+		return truckSTATUS;
+	}// END getSTATUS()
+	
+	//==========================================================================================
+	public static String getTRUCK()
+	{
+		String input = " ";
+		String searchTRUCK = " ";
+		input = JOptionPane.showInputDialog(null, "SEARCH FOR A TRUCK:\n\n" + "Enter truck model to search for: ");
+		searchTRUCK = input;
+		return searchTRUCK;
+	}// END getTRUCK()
+	
+	//==========================================================================================
+	public static int searchTRUCK(String searchTRUCK, String [] MAKE)
+	{
+		for(int i = 0; i < MAKE.length; i++)
+		{
+			if(searchTRUCK.equalsIgnoreCase(MAKE[i]))
+				return i;
+		}// END FOR
+		return -1;
+	}// END searchTRUCK()
+	
+	//==========================================================================================
+	public static void dispSINGLE(String [] MAKE, int [] MILEAGE, Boolean [] STATUS)
+	{
+		JOptionPane.showMessageDialog(null,  "VEHICLE SUMMARY: \n\n" + "MODEL: \t                 \t" + "MILEAGE: \t                 \t" + "STATUS: \n\n" + MAKE + "     " + MILEAGE + "     " + STATUS);
+	}// END dispSINGLE()
+	
+	//===========================================================================================
+	public static void dispTRUCK(String [] MAKE, int [] MILEAGE, Boolean [] STATUS)
+	{
+		String records = " ";
+		int nextCOUNT = 0;
+		JOptionPane.showMessageDialog(null,  "TOTAL VEHICLE INVENTORY: \n\n" + "MODEL: \t       \t" + "MILEAGE: \t       \t" + "STATUS: \n\n");
+		for (int i = 0; i < nextCOUNT ; i++)
+		{
+			records = records + MAKE[i] + "     " + MILEAGE[i] + "     " + STATUS[i];
+		}
+		JOptionPane.showMessageDialog(null,  records);
+	}// END dispTRUCK()
+	
+	//==========================================================================================
+		
+}// END CLASS Final_Iannucci
